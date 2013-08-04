@@ -1,0 +1,22 @@
+
+input{
+    display:block;
+}
+textarea{
+    outline:none;
+    border-radius:15px;
+    border: 10px solid #ccc;
+    width:380px;
+    background-color:black;
+    color:#00ff00;
+}
+button{
+    display:block;
+}
+span{
+    color:#787878;
+    display:block;
+    font-size:10px;
+    margin-left:330px;
+    margin-top:0px;
+}
