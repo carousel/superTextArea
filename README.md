@@ -1,2 +1,11 @@
-This is HTML textarea element  on steroids. It is implemented in vanillajs. Maxlength is set to 5, by default. It is done for testing, but feel free to override it. Common value is 255 characters. This is work in progress. I will be adding new features, in order to create full application.
+chatBoySlim
+by Miroslav Trninić
+miroslav.trninic@gmail.com
+
+This is HTML textarea element  on steroids, with some custom configuration options and a character counter. It is written in coffescript, and compiled to native JS.
+
+Todo:
+    - add options for db communication
+    - add support for web-sockets ( in order to create real front-end chat client )
+    - refactor everything cause it can be better I am sure :)
 

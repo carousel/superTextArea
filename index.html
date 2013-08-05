@@ -2,18 +2,50 @@
 <html charset="utf-8">
 
     <head>
-        <title>Char counter plugin</title>
+        <title>chatBoySlim</title>
         <link rel="stylesheet" href="style.css" type="text/css"/>
     </head>
 
     <body>
+        <div id="options">
+            <label>Background Color: </label>
+            <select name="bg-color">
+                    <option value="rgb(0,0,0)">Black</option>
+                    <option value="#ffffff">White</option>
+                </select>
+            <label>Font Family: </label>
+            <select name="font-family">
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Courier">Courier</option>
+                </select>
+                <label>Text Color: </label>
+                <select name="text-color">
+                    <option value="#00ff00">Green</option>
+                    <option value="#000000">Black</option>
+                    <option value="#ffffff">White</option>
+                    <option value="#fff300">Yellow</option>
+                </select>
+            <label>Font Size: </label>
+            <select name="font-size">
+                    <option value="10px">10</option>
+                    <option value="11px">11</option>
+                    <option value="12px">12</option>
+                    <option value="13px">13</option>
+                    <option value="14px">14</option>
+                    <option value="15px">15</option>
+                    <option value="16px">16</option>
+                    <option value="17px">17</option>
+                    <option value="18px">18</option>
+                    <option value="19px">19</option>
+                    <option value="20px">20</option>
+                </select>
+        </div>
 
         <form id="taform">
-        
-            <textarea placeholder="Hello. Maxlength is set to 5, because of testing. " maxlength="5" rows="8" cols="40"></textarea>
-            <span>5 characters left</span>
-        
+            <textarea placeholder="Enter your text"maxlength="255"rows="8"cols="40"></textarea>
+            <span>255 characters left</span>     
         </form>
+
     <script src="main.js"></script>
     </body>
 
