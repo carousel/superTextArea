@@ -1,4 +1,4 @@
-chatBoySlim
+superTextArea jQuery plugin
 by Miroslav Trninić
 miroslav.trninic@gmail.com
 
