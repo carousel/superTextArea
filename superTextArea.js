@@ -36,16 +36,12 @@
     fwd: function(e) {
       if (e.target.value.length < 255) {
         return sTA.counterSpan.innerText = 255 - (e.target.value.length + 1) + " characters left";
-      } else {
-        return sTA.counterSpan.innerText = 255 - e.target.value.length + " characters left";
       }
     },
     back: function(e) {
       if (e.keyCode === 8) {
         if (e.target.value.length > 0) {
-          return sTA.counterSpan.innerText = 255 - (--e.target.value.length) + " characters left";
-        } else {
-          return sTA.counterSpan.innerText = "255 characters left";
+          return sTA.counterSpan.innerText = 255 - (e.target.value.length - 1) + " characters left";
         }
       }
     },

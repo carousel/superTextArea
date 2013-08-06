@@ -29,15 +29,13 @@ sTA.counter =
     fwd: (e)->
         if e.target.value.length < 255
             sTA.counterSpan.innerText = 255 - ( e.target.value.length + 1 ) + " characters left"
-        else
-            sTA.counterSpan.innerText = 255 -  ( e.target.value.length ) + " characters left"
 
     back: (e)->
         if e.keyCode is 8
             if e.target.value.length > 0
-                sTA.counterSpan.innerText = 255 - ( --e.target.value.length ) + " characters left"
-            else
-                sTA.counterSpan.innerText = "255 characters left"
+                sTA.counterSpan.innerText = 255 - ( e.target.value.length-1 ) + " characters left"
+            #else
+                #sTA.counterSpan.innerText = "255 characters left"
 
     count: (e)->
         @fwd(e)
