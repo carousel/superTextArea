@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 <h2>superTextArea vanillajs app</h2>
 <p>by Miroslav Trninić</p>
+=======
+superTextArea jQuery plugin
+by Miroslav Trninić
+>>>>>>> f7ad9f4891b4b4b08669735194c1fb5fe37ef503
 miroslav.trninic@gmail.com
 
 <p>This is HTML textarea element  on steroids, with some custom configuration options and a character counter. It is written in coffescript, and compiled to native JS</p>
