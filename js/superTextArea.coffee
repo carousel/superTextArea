@@ -1,92 +1,74 @@
 # HTML input char-counter plugin, written in vanillajs
 # miroslav.trninic@gmail.com
-do($)->
-    #plugin ad object literal
-    @superTextArea = 
-        init:(options)->
-            @cacheElements(options)
-            #enable desired functionality inside plugin
-            superTextArea.counter.init()
-            superTextArea.style.init()
 
-        cacheElements: (options)->
-            @tArea= options.tArea 
-            @counterSpan= options.counterSpan
-            @bgColor= options.bgColor
-            @textColor= options.textColor
-            @fontFamily= options.fontFamily
-            @fontSize= options.fontSize
-        
+@sTA = 
+    init:()->
+        @cacheElements()
+        sTA.counter.init()
+        sTA.style.init()
+        @storage(name)
 
-    # counter at the end of textarea
-    superTextArea.counter = 
-        init: ()->
-           @.bindEvents()
-        bindEvents:()->
-            superTextArea.tArea.on "keydown",(e)=>
-                @.count(e)
-            superTextArea.tArea.on "focus",(e)->
-                e.target.placeholder = ""
-            superTextArea.tArea.on "blur",(e)->
-                e.target.placeholder = "Enter your text"
+    storage: (name)->
+        @storage = localStorage[name]
 
-        fwd: (e)->
-            if e.target.value.length < 255
-                superTextArea.counterSpan.text(255 - ( e.target.value.length + 1 ) + " characters left") 
-            else
-                superTextArea.counterSpan.text(255 -  ( e.target.value.length ) + " characters left")
+    cacheElements: ()->
+        @tArea= document.querySelector("textarea")
+        @counterSpan= document.querySelector("span")
+        @bgColor= document.querySelector("select#bg-color")
+        @textColor= document.querySelector("select#text-color")
+        @fontFamily= document.querySelector("select#font-family")
+        @fontSize= document.querySelector("select#font-size")
 
-        back: (e)->
-            if e.keyCode is 8
-                if e.target.value.length > 0
-                    superTextArea.counterSpan.text(255 - ( --e.target.value.length ) + " characters left")
-                else
-                    superTextArea.counterSpan.text("255 characters left")
+sTA.counter = 
+    init: ()->
+        @.bindEvents()
+    bindEvents:()->
+        sTA.tArea.addEventListener "keydown",(e)=>
+            @.count(e)
+        sTA.tArea.addEventListener "focus",(e)->
+            e.target.placeholder = ""
+        sTA.tArea.addEventListener "blur",(e)->
+            e.target.placeholder = "Enter your text"
 
-        count: (e)->
-            @fwd(e)
-            @back(e)
-            if e.keyCode is 13
-                alert(e.target.value)
-                superTextArea.counterSpan.text("255 characters left")            
-                e.preventDefault()
-                e.target.value = ""
-
-    # custom styling
-    superTextArea.style = 
-        init: ()->
-            @.bindEvents()
-        bindEvents: ()->
-            superTextArea.bgColor.on "click",(e)->
-                superTextArea.tArea.css({"backgroundColor": e.target.value})
-            superTextArea.textColor.on "click",(e)->
-                superTextArea.tArea.css({"color": e.target.value})
-            superTextArea.fontFamily.on "click",(e)->
-                superTextArea.tArea.css({"fontFamily": e.target.value})
-            superTextArea.fontSize.on "click",(e)->
-                superTextArea.tArea.css({"fontSize": e.target.value})
-
-    pluginName = "superTextArea"
-
-    defaults =
-        tArea:$("textarea")
-        counterSpan:$("span")
-        bgColor:$("select#bg-color")
-        textColor:$("select#text-color")
-        fontFamily:$("select#font-family")
-        fontSize:$("select#font-size")
-
-    $.fn[pluginName] = (custom)->
-        if typeof custom != "undefined"
-            superTextArea.init(custom)
-            @
+    fwd: (e)->
+        if e.target.value.length < 255
+            sTA.counterSpan.innerText = 255 - ( e.target.value.length + 1 ) + " characters left"
         else
-            superTextArea.init(defaults)
-            @
+            sTA.counterSpan.innerText = 255 - (--e.target.value.length) + " characters left"
 
-    # plugin is called on a document.body object, with a custom selected elements
-    $(document.body).superTextArea()
+    back: (e)->
+        if e.keyCode is 8
+            if e.target.value.length > 0
+                sTA.counterSpan.innerText = 255 - ( e.target.value.length-1 ) + " characters left"
+            else
+                sTA.counterSpan.innerText = "255 characters left"
 
+    count: (e)->
+        @fwd(e)
+        @back(e)
+        if e.keyCode is 13
+            console.log (e.target.value)
+            sTA.counterSpan.innerText = "255 characters left"
+            e.preventDefault()
+            e.target.value = ""
+
+sTA.style = 
+    init: ()->
+        @.bindEvents()
+    bindEvents: ()->
+        sTA.bgColor.addEventListener "click",(e)->
+            sTA.tArea.style.backgroundColor = e.target.value
+        sTA.textColor.addEventListener "click",(e)->
+            sTA.tArea.style.color = e.target.value
+        sTA.fontFamily.addEventListener "click",(e)->
+            sTA.tArea.style.fontFamily = e.target.value
+        sTA.fontSize.addEventListener "click",(e)->
+            sTA.tArea.style.fontSize = e.target.value
+
+sTA.init("db")
+
+
+    
 
 
 
