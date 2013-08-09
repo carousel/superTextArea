@@ -6,11 +6,6 @@
         @cacheElements()
         sTA.counter.init()
         sTA.style.init()
-        @storage(name)
-
-    storage: (name)->
-        @storage = localStorage[name]
-
     cacheElements: ()->
         @tArea= document.querySelector("textarea")
         @counterSpan= document.querySelector("span")
@@ -65,7 +60,7 @@ sTA.style =
         sTA.fontSize.addEventListener "click",(e)->
             sTA.tArea.style.fontSize = e.target.value
 
-sTA.init("db")
+sTA.init()
 
 
     

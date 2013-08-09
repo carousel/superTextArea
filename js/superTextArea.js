@@ -4,11 +4,7 @@
     init: function() {
       this.cacheElements();
       sTA.counter.init();
-      sTA.style.init();
-      return this.storage(name);
-    },
-    storage: function(name) {
-      return this.storage = localStorage[name];
+      return sTA.style.init();
     },
     cacheElements: function() {
       this.tArea = document.querySelector("textarea");
@@ -85,6 +81,6 @@
     }
   };
 
-  sTA.init("db");
+  sTA.init();
 
 }).call(this);
